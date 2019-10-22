@@ -1,2 +1,2 @@
-- ## Get Started
+- ## Sommaire
     - [A la base..](http://192.168.10.10/{{route}}/{{version}}/base)
