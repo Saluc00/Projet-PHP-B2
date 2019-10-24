@@ -13,7 +13,7 @@ class CreateCanalTable extends Migration
      */
     public function up()
     {
-        Schema::create('message', function (Blueprint $table) {
+        Schema::create('canal', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('titre');
             $table->text('description');
