@@ -13,13 +13,14 @@ class CreateMessageTable extends Migration
      */
     public function up()
     {
-        Schema::create('message', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('content');
             $table->unsignedBigInteger('fk_profile_id');
-            $table->foreign('fk_profile_id')->references('profile_id')->on('profile'); 
+            $table->foreign('fk_profile_id')->references('profile_id')->on('profiles'); 
             $table->unsignedBigInteger('fk_canal_id');
-            $table->foreign('fk_canal_id')->references('id')->on('canal');            
+            $table->foreign('fk_canal_id')->references('canal_id')->on('canals');            
+            $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
         });
     }
@@ -31,6 +32,6 @@ class CreateMessageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message');
+        Schema::dropIfExists('messages');
     }
 }

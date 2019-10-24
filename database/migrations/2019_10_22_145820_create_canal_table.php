@@ -13,10 +13,12 @@ class CreateCanalTable extends Migration
      */
     public function up()
     {
-        Schema::create('canal', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('canals', function (Blueprint $table) {
+            $table->bigIncrements('canal_id');
             $table->string('titre');
             $table->text('description');
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -27,6 +29,6 @@ class CreateCanalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('canal');
+        Schema::dropIfExists('canals');
     }
 }

@@ -7,10 +7,12 @@ use Faker\Generator as Faker;
 
 $factory->define(Profile::class, function (Faker $faker) {
     return [
-        'last_name' => $faker->lastname,
-        'first_name' => $faker->firstname,
-        'year_old' => rand(18, 89),
-        'phone' => '1234567890',
-        'address' => $faker->address,
+        'pseudo' => $faker->lastname,
+        'nom' => $faker->lastname,
+        'prenom' => $faker->firstname,
+        'age' => rand(18, 89),
+        'telephone' => '1234567890',
+        'adresse' => $faker->address,
+        'nb_amis' => rand(0, 9),
     ];
 });

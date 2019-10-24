@@ -13,7 +13,7 @@ class CreateProfileTable extends Migration
      */
     public function up()
     {
-        Schema::create('profile', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->bigIncrements('profile_id');
             $table->string('pseudo');            
             $table->string('nom');
@@ -25,7 +25,7 @@ class CreateProfileTable extends Migration
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->unsignedBigInteger('fk_user_id');
-            $table->foreign('fk_user_id')->references('id')->on('user');
+            $table->foreign('fk_user_id')->references('id')->on('users');
         });
     }
 
@@ -36,6 +36,6 @@ class CreateProfileTable extends Migration
      */
     public function down()
     {
-        Schema::drop('profile');
+        Schema::drop('profiles');
     }
 }
