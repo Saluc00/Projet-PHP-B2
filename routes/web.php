@@ -20,7 +20,7 @@ Route::post('/connexion', 'ConnexionController@traitement');
 Route::get('/chat', function () {
     $messages = App\Message::all();
 
-    return view( 'chat', [
+    return view('chat', [
         'messages' => $messages
     ]);
 });
@@ -29,7 +29,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/messages', 'MessageController@envoie');
+Route::get('/messages', 'MessageController@envoie')->name('messages');
 
 Route::get('/canals', function () {
     $canals = App\Canal::all();
