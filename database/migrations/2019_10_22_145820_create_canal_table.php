@@ -16,7 +16,6 @@ class CreateCanalTable extends Migration
         Schema::create('canals', function (Blueprint $table) {
             $table->bigIncrements('canal_id');
             $table->string('titre');
-            $table->text('description');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
         });

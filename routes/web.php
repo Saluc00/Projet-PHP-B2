@@ -31,10 +31,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/messages', 'MessageController@envoie')->name('messages');
 
-Route::get('/canals', function () {
-    $canals = App\Canal::all();
-
-    return view('canals', [
-        'canals' => $canals
-    ]);
-});
+Route::get('/canals', 'CanalController@formulaire');
+Route::post('/canals', 'CanalController@traitement');
