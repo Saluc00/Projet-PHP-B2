@@ -23,7 +23,7 @@ class InscriptionController extends Controller
         $user = \App\User::create([
             'name' => request('nom'),
             'email' => request('email'),
-            'password' => request('password')
+            'password' => bcrypt(request('password'))
         ]);
 
         $resultat = auth()->attempt([
