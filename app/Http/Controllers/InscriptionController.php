@@ -13,6 +13,11 @@ class InscriptionController extends Controller
 
     public function traitement()
     {
-
+        request()->validate([
+            'nom' => ['required'],
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+            'password_confirmation' => ['required'],
+        ]);
     }
 }

@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'InscriptionController@formulaire');
+Route::get('/inscription', 'InscriptionController@formulaire');
 
-Route::post('/', 'InscriptionController@traitement');
+Route::post('/inscription', 'InscriptionController@traitement');
 
 Route::get('/chat', function () {
     $messages = App\Message::all();
