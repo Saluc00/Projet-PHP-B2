@@ -10,6 +10,8 @@
     <input type="submit" value="Envoyer">
 </form>
 
+<p>{{ Auth::user()->name }}</p>
+
 <ul>
     @foreach($canals as $canal)
         <li>{{ $canal->titre }}</li>

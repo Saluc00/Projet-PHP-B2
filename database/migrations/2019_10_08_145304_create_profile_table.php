@@ -24,8 +24,8 @@ class CreateProfileTable extends Migration
             $table->bigInteger('nb_amis');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
-            $table->unsignedBigInteger('fk_user_id');
-            $table->foreign('fk_user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
