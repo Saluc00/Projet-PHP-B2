@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,10 +37,6 @@ Route::get('/messages', 'MessageController@envoie')->name('messages');
 Route::get('/canals', 'CanalController@formulaire');
 Route::post('/canals', 'CanalController@traitement');
 
-Route::get('/canal/{id}', function($id) {
+Route::get('/canal/{id}', 'CanalController@returnCanal');
 
-    $canal = DB::table('canals')->where('canal_id', '=', $id)->get();
-    return view('canal', [
-        'canal' => $canal
-    ]);
-});
+Route::post('/canal/{id}', 'CanalController@envoieMessage');
