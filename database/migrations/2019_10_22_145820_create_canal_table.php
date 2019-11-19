@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+date_default_timezone_set('UTC');
+
 class CreateCanalTable extends Migration
 {
     /**
@@ -16,8 +18,8 @@ class CreateCanalTable extends Migration
         Schema::create('canals', function (Blueprint $table) {
             $table->bigIncrements('canal_id');
             $table->string('titre');
-            $table->timestamp('updated_at')->nullable();
-            $table->timestamp('created_at')->nullable();
+            $table->boolean('estPublic');
+            $table->timestamps();
         });
     }
 
