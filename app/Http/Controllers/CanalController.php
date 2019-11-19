@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CanalController extends Controller
 {
@@ -31,13 +32,19 @@ class CanalController extends Controller
         return redirect('canals');
     }
 
-    public function returnCanal()
+    public function returnCanal($id)
     {
 
-        $canal = \App\Canal::find();
+        $canal = DB::table('canals')->where('canal_id', '=', $id)->get();
 
         return view('canal', [
-            'canal' => $canal
+            'canal' => $canal[0]
         ]);
+    }
+
+    public function envoieMessage($id)
+    {
+        DB::table('messages')->insert(['content' => request('message'), 'user_id' => Auth::user()->id, 'fk_canal_id' => $id]);
+        return redirect('canal'.'/'.$id);
     }
 }
