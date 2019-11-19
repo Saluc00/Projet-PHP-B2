@@ -39,6 +39,6 @@ Route::get('/canal/{id}', function($id) {
 
     $canal = DB::table('canals')->where('canal_id', '=', $id)->get();
     return view('canal', [
-        'canal' => $canal
+        'canal' => $canal[0]
     ]);
 });
