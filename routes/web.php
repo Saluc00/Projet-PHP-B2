@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +36,9 @@ Route::get('/canals', 'CanalController@formulaire');
 Route::post('/canals', 'CanalController@traitement');
 
 Route::get('/canal/{id}', function($id) {
+
+    $canal = DB::table('canals')->where('canal_id', '=', $id)->get();
     return view('canal', [
-        'id' => $id
+        'canal' => $canal
     ]);
 });

@@ -2,6 +2,6 @@
 
 @section('content')
 
-{{ $id }} 
+{{ $canal[0]->titre }}
 
 @endsection
