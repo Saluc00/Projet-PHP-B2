@@ -30,4 +30,14 @@ class CanalController extends Controller
 
         return redirect('canals');
     }
+
+    public function returnCanal()
+    {
+
+        $canal = \App\Canal::find();
+
+        return view('canal', [
+            'canal' => $canal
+        ]);
+    }
 }
