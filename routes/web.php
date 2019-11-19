@@ -34,4 +34,8 @@ Route::get('/messages', 'MessageController@envoie')->name('messages');
 Route::get('/canals', 'CanalController@formulaire');
 Route::post('/canals', 'CanalController@traitement');
 
-Route::get('/canal/{id}', 'CanalController@returnCanal', )
+Route::get('/canal/{id}', function($id) {
+    return view('canal', [
+        'id' => $id
+    ]);
+});
