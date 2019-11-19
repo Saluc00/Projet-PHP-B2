@@ -27,5 +27,7 @@ class CanalController extends Controller
         $canals = \App\Canal::create([
             'titre' => request('titre')
         ]);
+
+        return redirect('canals');
     }
 }
