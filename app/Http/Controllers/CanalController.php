@@ -23,12 +23,11 @@ class CanalController extends Controller
     {
         $resultat = request()->validate([
             'titre' => ['required'],
-            'estPublic' => ['required']
         ]);
 
         $canals = \App\Canal::create([
             'titre' => request('titre'),
-            'estPublic' => request('estPublic')
+            'estPublic' => request('estPublic') ?? 0
         ]);
 
         return redirect('canals');

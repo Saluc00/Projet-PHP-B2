@@ -7,8 +7,8 @@
     <form action="/canals" method="post">
         {{ csrf_field() }}
         <input name="titre" placeholder="Titre">
-        <input name="estPublic" placeholder="estPublic">
         <input type="submit" value="Envoyer">
+        <INPUT type="checkbox" name="estPublic" value="1" checked> Canal Public
     </form>
 
     <!--<p>{{ Auth::user()->id }}</p> -->
