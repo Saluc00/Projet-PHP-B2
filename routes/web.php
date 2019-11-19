@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,4 +42,8 @@ Route::get('/canal/{id}', function($id) {
     return view('canal', [
         'canal' => $canal[0]
     ]);
+});
+
+Route::post('/canal/{id}', function($id){
+    DB::table('messages')->insert(['content' => request('message'), 'fk_profile_id' => Auth::user()->id, 'fk_canal_id' => $id]);
 });
