@@ -36,9 +36,10 @@ class CanalController extends Controller
     {
 
         $canal = DB::table('canals')->where('canal_id', '=', $id)->get();
-
+        $messages = DB::table('messages')->where('fk_canal_id', '=', $id)->get();
         return view('canal', [
-            'canal' => $canal[0]
+            'canal' => $canal[0],
+            'messages' => $messages
         ]);
     }
 
