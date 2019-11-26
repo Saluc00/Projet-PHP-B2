@@ -22,11 +22,12 @@ class CanalController extends Controller
     public function traitement()
     {
         $resultat = request()->validate([
-            'titre' => ['required']
+            'titre' => ['required'],
         ]);
 
         $canals = \App\Canal::create([
-            'titre' => request('titre')
+            'titre' => request('titre'),
+            'estPublic' => request('estPublic') ?? 0
         ]);
 
         return redirect('canals');
@@ -45,7 +46,16 @@ class CanalController extends Controller
 
     public function envoieMessage($id)
     {
-        DB::table('messages')->insert(['content' => request('message'), 'user_id' => Auth::user()->id, 'fk_canal_id' => $id]);
-        return redirect('canal'.'/'.$id);
+        $resultat = request()->validate([
+            'message' => ['required'],
+        ]);
+
+        $canals = \App\Message::create([
+            'content' => request('message'),
+            'user_id' => Auth::user()->id,
+            'fk_canal_id' => $id
+        ]);
+
+        return redirect('canal' . '/' . $id);
     }
 }
