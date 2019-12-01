@@ -56,11 +56,17 @@
                                 </div>
                             </div>
 
-                            <select name="role" class="form-control" >
-                                <option value="admin"> Admin </option>
+                            <select name="role" class="form-control">
+                                <option value="admin"> Admin</option>
                                 <option value="vip"> VIP</option>
                                 <option value="user"> User</option>
                             </select>
+
+                            <input name="pseudo" placeholder="Pseudo">
+                            <input name="nom" placeholder="Nom">
+                            <input name="prenom" placeholder="Prénom">
+                            <input name="age" placeholder="age">
+                            <input name="phone" placeholder="Téléphone">
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

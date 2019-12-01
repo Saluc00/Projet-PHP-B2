@@ -20,8 +20,6 @@ class CreateProfileTable extends Migration
             $table->string('prenom');
             $table->string('age');
             $table->string('telephone');
-            $table->string('adresse');
-            $table->bigInteger('nb_amis');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->unsignedBigInteger('user_id');

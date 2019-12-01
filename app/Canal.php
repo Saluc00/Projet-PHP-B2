@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Canal extends Model
 {
     protected $fillable = [
-        'titre', 'estPublic'
+        'titre', 'estPrive'
     ];
 
     public function message()

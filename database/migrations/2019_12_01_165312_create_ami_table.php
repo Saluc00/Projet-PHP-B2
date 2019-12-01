@@ -4,9 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-date_default_timezone_set('UTC');
-
-class CreateCanalTable extends Migration
+class CreateAmiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,11 +13,11 @@ class CreateCanalTable extends Migration
      */
     public function up()
     {
-        Schema::create('canals', function (Blueprint $table) {
-            $table->bigIncrements('canal_id');
-            $table->string('titre');
-            $table->boolean('estPrive');
-            $table->timestamps();
+        Schema::create('amis', function (Blueprint $table) {
+            $table->bigInteger('profil_id');
+            $table->bigInteger('profil_suivi_id');
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -30,6 +28,6 @@ class CreateCanalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('canals');
+        Schema::dropIfExists('ami');
     }
 }

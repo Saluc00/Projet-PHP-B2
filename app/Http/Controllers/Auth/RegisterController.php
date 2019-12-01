@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\profile;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -53,7 +55,12 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
-            'role' => ['required', 'string']
+            'role' => ['required', 'string'],
+            'pseudo' => ['required', 'string'],
+            'nom' => ['required', 'string'],
+            'prenom' => ['required', 'string'],
+            'age' => ['required'],
+            'phone' => ['required']
         ]);
     }
 
@@ -63,12 +70,26 @@ class RegisterController extends Controller
      * @param array $data
      * @return \App\User
      */
+
     protected function create(array $data)
     {
         echo request();
-        return User::create([
+        $user = User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
-        ])->assignRole($data['role']);
+        ]);
+        $user->assignRole($data['role']);
+
+        Profile::create([
+            'pseudo' => $data['pseudo'],
+            'nom' => $data['nom'],
+            'prenom' => $data['prenom'],
+            'age' => $data['age'],
+            'telephone' => $data['phone'],
+            'user_id' => $user->id
+        ]);
+        return $user;
     }
+
+
 }
