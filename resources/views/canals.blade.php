@@ -11,7 +11,11 @@
         <INPUT type="checkbox" name="estPublic" value="1" checked> Canal Public
     </form>
 
+<<<<<<< Updated upstream
     <!--<p>{{ Auth::user()->id }}</p> -->
+=======
+<p>{{ Auth::user->email }}</p>
+>>>>>>> Stashed changes
 
     <ul>
         @foreach($canals as $canal)
