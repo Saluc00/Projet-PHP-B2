@@ -6,7 +6,7 @@
 
 <div>
     @foreach($messages as $message)
-        <p>{{ $message->content }}</p>
+        <p><strong>{{ (DB::table('users')->where('id', '=', $message->user_id)->get())[0]->id }}</strong>: {{ $message->content }}</p>
     @endforeach
 </div>
 

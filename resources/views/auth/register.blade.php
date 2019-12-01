@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -54,6 +55,12 @@
                                            name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
+
+                            <select name="role" class="form-control" >
+                                <option value="admin"> Admin </option>
+                                <option value="vip"> VIP</option>
+                                <option value="user"> User</option>
+                            </select>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

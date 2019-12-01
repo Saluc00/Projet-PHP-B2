@@ -13,7 +13,6 @@
 
     <!--<p>{{ Auth::user()->id }}</p> -->
 
-
     <ul>
         @foreach($canals as $canal)
             <li><a href="{{ url('canal').'/'.$canal->canal_id }}">{{ $canal->titre }}</a></li>

@@ -13,13 +13,6 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/inscription', 'InscriptionController@formulaire');
-Route::post('/inscription', 'InscriptionController@traitement');
-
-Route::get('/connexion', 'ConnexionController@formulaire');
-Route::post('/connexion', 'ConnexionController@traitement');
-
 Route::get('/chat', function () {
     $messages = App\Message::all();
 
@@ -40,3 +33,12 @@ Route::post('/canals', 'CanalController@traitement');
 Route::get('/canal/{id}', 'CanalController@returnCanal');
 
 Route::post('/canal/{id}', 'CanalController@envoieMessage');
+
+Route::get('/admin', 'AdminController@index');
+Route::get('/delete/canal/{id}', 'AdminController@supprCanal');
+
+Route::get('/test', function() {
+    $event = new \App\TestEvent();
+    event($event);
+    dd();
+});
