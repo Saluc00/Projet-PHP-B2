@@ -63,3 +63,7 @@ Route::get('/test', function () {
     event($event);
     dd();
 });
+
+
+Route::post('/envoie/message/{id}', 'MessageController@messageEntreAmisEnvoie');
+Route::get('/message/{id}', 'MessageController@messageEntreAmis');

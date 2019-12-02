@@ -543,7 +543,7 @@ class ComposerStaticInit1e44bfeb5b40239e6a762131e4364404
     );
 
     public static $classMap = array (
-        'App\\Ami' => __DIR__ . '/../..' . '/app/Ami.php',
+        'App\\Ami' => __DIR__ . '/../..' . '/app/ami.php',
         'App\\Canal' => __DIR__ . '/../..' . '/app/Canal.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Events\\TestEvent' => __DIR__ . '/../..' . '/app/Events/TestEvent.php',
@@ -561,6 +561,7 @@ class ComposerStaticInit1e44bfeb5b40239e6a762131e4364404
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\MessageController' => __DIR__ . '/../..' . '/app/Http/Controllers/MessageController.php',
+        'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',

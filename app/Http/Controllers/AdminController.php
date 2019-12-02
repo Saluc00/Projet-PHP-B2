@@ -16,6 +16,7 @@ class AdminController extends Controller
 
     public function supprCanal($id)
     {
+        DB::table('messages')->where('fk_canal_id', '=', $id)->delete();
         DB::table('canals')->where('canal_id', '=', $id)->delete();
         return redirect('/admin');
     }

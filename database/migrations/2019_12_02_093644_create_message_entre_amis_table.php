@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAmiTable extends Migration
+class CreateMessageEntreAmisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateAmiTable extends Migration
      */
     public function up()
     {
-        Schema::create('amis', function (Blueprint $table) {
-            $table->bigIncrements('amis_id');
+        Schema::create('message_entre_amis', function (Blueprint $table) {
+            $table->bigIncrements('mea_id');
             $table->bigInteger('profil_id');
             $table->bigInteger('profil_suivi_id');
+            $table->text('content');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
         });
@@ -29,6 +30,6 @@ class CreateAmiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('amis');
+        Schema::dropIfExists('message_entre_amis');
     }
 }

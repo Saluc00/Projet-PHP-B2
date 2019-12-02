@@ -73,6 +73,7 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
+        var_dump($data);
         echo request();
         $user = User::create([
             'email' => $data['email'],
