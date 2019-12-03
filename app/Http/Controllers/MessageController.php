@@ -33,51 +33,25 @@ class MessageController extends Controller
 
     public function messageEntreAmisEnvoie($id)
     {
-        $test1 = DB::select('select * from message_entre_amis where profil_id = ? and profil_suivi_id = ?', [auth()->user()->id,  $id]);
-        $test2 = DB::select('select * from message_entre_amis where profil_suivi_id = ? and profil_id = ?', [auth()->user()->id,  $id]);
+        $req = DB::select('select * from message_entre_amis where profil_id = ? and profil_suivi_id = ? or profil_id = ? and profil_suivi_id = ? order by mea_id asc', [auth()->user()->id,  $id, $id, auth()->user()->id]);
 
-        if (!empty($test1) && empty($test2))
-        {
-            MessageEntreAmis::create([
-                'content' => request('message'),
-                'profil_id' => auth()->user()->id,
-                'profil_suivi_id' => $id,
-            ]);
+        MessageEntreAmis::create([
+            'content' => request('message'),
+            'profil_id' => auth()->user()->id,
+            'profil_suivi_id' => $id,
+        ]);
 
-            return back();            
-        }
-        elseif (!empty($test2) && empty($test1))
-        {
-            MessageEntreAmis::create([
-                'content' => request('message'),
-                'profil_id' => $id,
-                'profil_suivi_id' => auth()->user()->id,
-            ]);
-            
-            return back();
-        }
-        else
-        {
-            MessageEntreAmis::create([
-                'content' => request('message'),
-                'profil_id' => auth()->user()->id,
-                'profil_suivi_id' => $id,
-            ]);
-
-            return back();
-        }
+        return back();
 
     }
 
     public function messageEntreAmis($id) 
     {   
-        $messages = DB::select('select * from message_entre_amis where profil_id = ? and profil_suivi_id = ?', [auth()->user()->id,  $id]);
-        if (empty($messages))
-        {
-            $messages = DB::select('select * from message_entre_amis where profil_suivi_id = ? and profil_id = ?', [auth()->user()->id,  $id]);
-        }
+        $messages = DB::select('select * from message_entre_amis where profil_id = ? and profil_suivi_id = ? or profil_id = ? and profil_suivi_id = ? order by mea_id asc', [auth()->user()->id,  $id, $id, auth()->user()->id]);
+
+        var_dump($messages);
         return view('message', [
-            'message' =>  $messages,
+            'messages' =>  $messages,
             'id' => $id,
 
         ]);

@@ -2,8 +2,8 @@
 
 @section('content')
 
-@foreach($message as $message)
-<li> {{ DB::table('profiles')->where('profile_id', '=', $message->profil_id)->get()[0]->pseudo }}-> {{ $message->content }}</li>
+@foreach($messages as $message)
+<li> {{ DB::table('profiles')->where('profile_id', '=', $message->profil_id)->get()[0]->pseudo }} -> {{ $message->content }}</li>
 @endforeach
 <form action="/envoie/message/{{ $id }}" method="post">
 
