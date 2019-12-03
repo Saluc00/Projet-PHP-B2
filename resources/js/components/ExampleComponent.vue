@@ -17,6 +17,11 @@
 <script>
     export default {
         mounted() {
+            Echo.channel('test')
+                listen('TestEvent', (e) => {
+                    console.log(e)
+                })
+            axios.post('/canal/2')
             console.log('Component mounted.')
         }
     }

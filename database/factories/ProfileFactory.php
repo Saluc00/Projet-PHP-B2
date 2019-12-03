@@ -12,7 +12,5 @@ $factory->define(Profile::class, function (Faker $faker) {
         'prenom' => $faker->firstname,
         'age' => rand(18, 89),
         'telephone' => '1234567890',
-        'adresse' => $faker->address,
-        'nb_amis' => rand(0, 9),
     ];
 });

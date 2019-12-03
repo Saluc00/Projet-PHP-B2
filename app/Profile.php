@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class profile extends Model
 {
-    
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'nom', 'prenom', 'age', 'tel', 'adresse', 'user_id'
+        'pseudo', 'nom', 'prenom', 'age', 'telephone', 'user_id'
     ];
 
     public function user()

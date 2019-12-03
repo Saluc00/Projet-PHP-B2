@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ConnexionController extends Controller
@@ -19,6 +20,7 @@ class ConnexionController extends Controller
         ]);
         
         if ($resultat) {
+            Auth::attempt(['email' => request('email'), 'password' => request('password')]);
             return redirect('home');
         } else 
         {

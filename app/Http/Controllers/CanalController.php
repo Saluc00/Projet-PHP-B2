@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class CanalController extends Controller
 {
     public function formulaire()
     {
         $canals = \App\Canal::all();
+        $canalsPublic = \App\Canal::all()->where('estPrive', '=', 0);
         $user = auth();
 
         return view('canals', [
             'canals' => $canals,
+            'canalsPublic' => $canalsPublic,
             'user' => $user
         ]);
     }
@@ -27,7 +30,7 @@ class CanalController extends Controller
 
         $canals = \App\Canal::create([
             'titre' => request('titre'),
-            'estPublic' => request('estPublic') ?? 0
+            'estPrive' => request('estPrive') ?? 0
         ]);
 
         return redirect('canals');
@@ -38,6 +41,9 @@ class CanalController extends Controller
 
         $canal = DB::table('canals')->where('canal_id', '=', $id)->get();
         $messages = DB::table('messages')->where('fk_canal_id', '=', $id)->get();
+        if ($canal[0]->estPrive && (Auth::guest() || Auth::user()->hasRole('user'))) {
+            return redirect('canals');
+        }
         return view('canal', [
             'canal' => $canal[0],
             'messages' => $messages

@@ -18,7 +18,7 @@ class CreateCanalTable extends Migration
         Schema::create('canals', function (Blueprint $table) {
             $table->bigIncrements('canal_id');
             $table->string('titre');
-            $table->boolean('estPublic');
+            $table->boolean('estPrive');
             $table->timestamps();
         });
     }
