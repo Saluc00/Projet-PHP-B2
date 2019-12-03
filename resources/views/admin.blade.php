@@ -3,6 +3,8 @@
 @section('content')
 
 
+<div class="container">
+
 @if (Auth::user()->hasRole('admin'))
 
 
@@ -18,4 +20,5 @@
 <h1>404</h1>
 @endif
 
+</div>
 @endsection
