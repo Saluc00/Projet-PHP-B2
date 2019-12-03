@@ -35,13 +35,13 @@ class ProfileController extends Controller
         return redirect('/profile/' . $id);
     }
 
-    public function retirerAmi($id)
+    public function retirerAmi($idsuppr, $idenvoie)
     {
         DB::table('amis')
-            ->where('profil_id', Auth::user()->id)
-            ->where('profil_suivi_id', $id)
+            ->where('profil_id', $idenvoie)
+            ->where('profil_suivi_id', $idsuppr)
             ->delete();
 
-        return redirect('/profile/' . $id);
+        return redirect('/profile/' . $idenvoie);
     }
 }

@@ -32,7 +32,6 @@ Route::post('/connexion', 'ConnexionController@traitement');
 
 Route::get('/chat', function () {
     $messages = App\Message::all();
-
     return view('chat', [
         'messages' => $messages
     ]);
@@ -51,7 +50,7 @@ Route::get('/canal/{id}', 'CanalController@returnCanal');
 
 Route::get('/profile/{id}', 'ProfileController@returnProfile');
 Route::post('/ajouterAmi/{id}', 'ProfileController@ajoutAmi');
-Route::post('/retirerAmi/{id}', 'ProfileController@retirerAmi');
+Route::get('/retirerAmi/{idsuppr}-{idenvoie}', 'ProfileController@retirerAmi');
 
 Route::post('/canal/{id}', 'CanalController@envoieMessage');
 

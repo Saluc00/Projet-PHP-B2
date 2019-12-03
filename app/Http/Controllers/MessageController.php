@@ -27,7 +27,7 @@ class MessageController extends Controller
             'fk_canal_id' => 1, 
         ]);
 
-//        flash("Votre message a bien été publié.")->sucess();
+        //  flash("Votre message a bien été publié.")->sucess();
         return back();
     }
 
