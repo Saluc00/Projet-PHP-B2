@@ -42,14 +42,14 @@
         </ul>
     </div>
 
-    
-    @if(DB::table('profiles')->where('user_id', '=', Auth::user()->id)->get()[0]->profile_id != $profile->profile_id)
-        @if(!$estSuivi)
+@if(!Auth::guest())
+    @if((DB::table('profiles')->where('user_id', '=', Auth::user()->id)->get())[0]->profile_id != $profile->profile_id)
+        @if(! $estSuivi)
             <form action="{{ url('ajouterAmi').'/'.$profile->profile_id }}" method="post">
                 {{ csrf_field() }}
                 <input type="submit" value="Ajouter en ami">
             </form>
-            @else
+        @else
             <form action="{{ url('retirerAmi').'/'.$profile->profile_id }}" method="post">
                 {{ csrf_field() }}
                 <input type="submit" value="Retirer cet ami">

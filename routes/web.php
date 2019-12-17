@@ -56,6 +56,7 @@ Route::post('/canal/{id}', 'CanalController@envoieMessage');
 
 Route::get('/admin', 'AdminController@index');
 Route::get('/delete/canal/{id}', 'AdminController@supprCanal');
+Route::get('/ban/user/{id}', 'AdminController@banUser');
 
 Route::get('/test', function () {
     $event = new \App\TestEvent();
