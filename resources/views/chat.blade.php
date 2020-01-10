@@ -2,28 +2,30 @@
 
 @section('content')
 
-<div class="message">
 
-@foreach($messages as $message)
-    <li> -> {{ $message->content }}</li>
-@endforeach
-    <form action="/messages" method="post">
+<div class="container">
+    <div class="message">
 
-    {{ csrf_field() }}
-        <div>
-            <label class="label">Message</label>
+        @foreach($messages as $message)
+        <li> -> {{ $message->content }}</li>
+        @endforeach
+        <form action="/messages" method="post">
+
+            {{ csrf_field() }}
             <div>
-                <textarea name="message"></textarea>
-            </div>
-            @if($errors->has("message"))
+                <label class="label">Message</label>
+                <div>
+                    <textarea name="message"></textarea>
+                </div>
+                @if($errors->has("message"))
                 <p class="help is-danger">{{ $errors->first('message') }}</p>
-            @endif
-        </div>
+                @endif
+            </div>
 
-        <div>
-            <button type=submit>Publier</button>
-        </div>
-    </form>
+            <div>
+                <button type=submit>Publier</button>
+            </div>
+        </form>
+    </div>
 </div>
-
 @endsection

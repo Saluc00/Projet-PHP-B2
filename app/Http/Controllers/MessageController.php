@@ -27,7 +27,7 @@ class MessageController extends Controller
             'fk_canal_id' => 1, 
         ]);
 
-//        flash("Votre message a bien été publié.")->sucess();
+        //  flash("Votre message a bien été publié.")->sucess();
         return back();
     }
 
@@ -48,8 +48,6 @@ class MessageController extends Controller
     public function messageEntreAmis($id) 
     {   
         $messages = DB::select('select * from message_entre_amis where profil_id = ? and profil_suivi_id = ? or profil_id = ? and profil_suivi_id = ? order by mea_id asc', [auth()->user()->id,  $id, $id, auth()->user()->id]);
-
-        var_dump($messages);
         return view('message', [
             'messages' =>  $messages,
             'id' => $id,
