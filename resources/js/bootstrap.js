@@ -29,11 +29,18 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * allows your team to easily build robust real-time web applications.
  */
 
-import Echo from "laravel-echo"
+import Echo from 'laravel-echo';
 
 window.io = require('socket.io-client');
 
 window.Echo = new Echo({
     broadcaster: 'socket.io',
-    host: 'localhost:6001'
+    host: window.location.hostname + ':6001',
 });
+
+window.Echo.channel('mon-premier-channel').listen('.PremierEvent', function (e) {
+    alert("Websocket ma gueule ;-) !");
+    console.log('nouvelle event');
+    console.log(e);
+});
+
