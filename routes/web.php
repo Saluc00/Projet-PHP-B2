@@ -57,6 +57,11 @@ Route::middleware(['banned'])->group(function () {
         event($event);
         dd();
     });
+        
+    Route::get('/vip', function () {
+        Auth::user()->assignRole('vip');
+        return back();
+    });
 
 
     Route::post('/envoie/message/{id}', 'MessageController@messageEntreAmisEnvoie');
