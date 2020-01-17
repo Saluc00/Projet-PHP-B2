@@ -62,6 +62,17 @@ class CanalController extends Controller
             'fk_canal_id' => $id
         ]);
 
+        $dateNewMessage = $canals->created_at;
+
+        $dateLastMessage = DB::table('messages')->where('created_at', '<', $dateNewMessage)->latest()->limit(1)->get()[0]->created_at;
+        $diffDate = strtotime($dateNewMessage) - strtotime($dateLastMessage);
+
+        if ( $diffDate > 10  /* Si un message a été envoyé apres 1h */ ) {
+            /* ici envoyer un mail */ echo 'oui';
+        } 
+
+
+
         return redirect('canal' . '/' . $id);
     }
 }
