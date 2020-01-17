@@ -7,7 +7,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Register') }}</div>
-
+                
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
@@ -55,19 +55,52 @@
                                            name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
+<hr>
+                            {{-- pseudo --}}
+                            <div class="form-group row">                                
+                                <label for="password-confirm"
+                                class="col-md-4 col-form-label text-md-right">Pseudo</label>
+                                <div class="col-md-6">
+                                    <input  class="form-control" name="pseudo">
+                                </div>
+                            </div>
 
-                            <select name="role" class="form-control">
-                                <option value="admin"> Admin</option>
-                                <option value="vip"> VIP</option>
-                                <option value="user"> User</option>
-                            </select>
+                            {{-- nom --}}
+                            <div class="form-group row">                                
+                                <label for="password-confirm"
+                                class="col-md-4 col-form-label text-md-right">Nom</label>
+                                <div class="col-md-6">
+                                    <input  class="form-control" name="nom">
+                                </div>
+                            </div>
+                            
+                            {{-- prénom --}}
+                            <div class="form-group row">                                
+                                <label for="password-confirm"
+                                class="col-md-4 col-form-label text-md-right">Prénom</label>
+                                <div class="col-md-6">
+                                    <input  class="form-control" name="prenom">
+                                </div>
+                            </div>
 
-                            <input name="pseudo" placeholder="Pseudo">
-                            <input name="nom" placeholder="Nom">
-                            <input name="prenom" placeholder="Prénom">
-                            <input name="age" placeholder="age">
-                            <input name="phone" placeholder="Téléphone">
-
+                            {{-- Téléphone --}}
+                            <div class="form-group row">                                
+                                <label for="password-confirm"
+                                class="col-md-4 col-form-label text-md-right">Téléphone</label>
+                                <div class="col-md-6">
+                                    <input  class="form-control" name="phone">
+                                </div>
+                            </div>
+                            
+                            {{-- Age --}}
+                            <div class="form-group row">                                
+                                <label for="password-confirm"
+                                class="col-md-4 col-form-label text-md-right">Age</label>
+                                <div class="col-md-6">
+                                    <input  class="form-control" name="age">
+                                </div>
+                            </div>
+                            
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">

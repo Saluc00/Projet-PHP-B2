@@ -24,13 +24,6 @@ Route::middleware(['banned'])->group(function () {
         return view('canals');
     })->name('canals');
 
-
-    Route::get('/inscription', 'InscriptionController@formulaire');
-    Route::post('/inscription', 'InscriptionController@traitement');
-
-    Route::get('/connexion', 'ConnexionController@formulaire');
-    Route::post('/connexion', 'ConnexionController@traitement');
-
     Route::get('/chat', function () {
         $messages = App\Message::all();
         return view('chat', [
