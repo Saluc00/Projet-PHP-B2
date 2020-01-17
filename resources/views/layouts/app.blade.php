@@ -48,8 +48,13 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
 
+                    <ul class="navbar-nav mr-auto">
+                        @if (!Auth::guest())
+                        <li class="nav-item">
+                            <p class="nav-link disabled">Votre roles: <b>{{ Auth::user()->roles->first()->name }}</b></p>
+                        </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -64,13 +69,12 @@
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
-                        @else
+                        @else     
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }} <span class="caret">Menu</span>
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @if (Auth::user()->hasRole('admin'))
                                 <a class="dropdown-item" href="{{ url('admin') }}">
@@ -87,6 +91,12 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+                                
+                                @if (Auth::user()->roles->first()->name == "user")
+                                <li class="nav-item">
+                                    <a class="nav-link btn btn-primary" href="/vip">Devenir VIP</a>
+                                </li>
+                                @endif
                                 
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
