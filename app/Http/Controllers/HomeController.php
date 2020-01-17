@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+<<<<<<< Updated upstream
+use Illuminate\Support\Facades\Auth;
+=======
+use App\Events\PremierEvent;
+>>>>>>> Stashed changes
 
 class HomeController extends Controller
 {
@@ -24,6 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (!Auth::guest()) {
+            $user = Auth::user();
+            $user = json_encode($user);
+            event(new PremierEvent($user)); # ici on appel l'event en lui envoyant le user connecté    
+        }
+        return view('home');    
     }
 }
