@@ -21,10 +21,14 @@ class AdminController extends Controller
         }
 
         $users = DB::table('users')
-            ->whereNotIn('id', $listeIdAdmin)
+            ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+            ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+            ->whereNotIn('users.id', $listeIdAdmin)
+            ->select('users.*', 'roles.name')
             ->get();
 
         return view('admin', [
+
             'canals' => $canals,
             'users' => $users
         ]);
@@ -37,9 +41,9 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
-    public function banUser($id)
+    public function changeRole($id_user, $id_role)
     {
-        DB::update('update model_has_roles set role_id = 4 where model_id = ? and model_type = ?', [$id, "App\User"]);
+        DB::update('update model_has_roles set role_id = ? where model_id = ? and model_type = ?', [$id_role, $id_user, "App\User"]);
 
         return redirect('/admin');
     }
