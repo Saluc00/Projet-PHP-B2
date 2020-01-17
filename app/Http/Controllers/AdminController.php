@@ -34,14 +34,14 @@ class AdminController extends Controller
     {
         DB::table('messages')->where('fk_canal_id', ' = ', $id)->delete();
         DB::table('canals')->where('canal_id', ' = ', $id)->delete();
-        return redirect(' / admin');
+        return redirect('/admin');
     }
 
     public function banUser($id)
     {
-        DB::update('update model_has_roles set role_id = 4, where id = ? and model_type = ?', [$id, 'App\User']);
+        DB::update('update model_has_roles set role_id = 4 where model_id = ? and model_type = ?', [$id, "App\User"]);
 
-        return redirect(' / admin');
+        return redirect('/admin');
     }
 
 
