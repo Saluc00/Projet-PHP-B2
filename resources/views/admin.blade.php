@@ -21,19 +21,6 @@
 
             <h2>User</h2>
 
-    <div class="d-flex">
-        <div class="col-6 bg-success m-1">
-            @foreach($users as $user)
-            <p class="dropdown-item col-10"><strong>{{ $user->email }}</strong><a href="ban/user/{{ $user->id }}">
-                <button class="btn btn-primary col-2">Bannir</button>
-            </a>
-            @endforeach
-        </div>
-        <div class="col-6 bg-danger m-1">
-        fgdn
-        </div>
-    </div>
-
             @foreach($users as $user)
 
                 <li><strong>{{ $user->email }}</strong></li>
