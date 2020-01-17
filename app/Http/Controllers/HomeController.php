@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-<<<<<<< Updated upstream
-use Illuminate\Support\Facades\Auth;
-=======
 use App\Events\PremierEvent;
->>>>>>> Stashed changes
+
 
 class HomeController extends Controller
 {
