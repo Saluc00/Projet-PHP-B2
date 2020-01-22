@@ -11,7 +11,7 @@
             {{ $message->content }}</li>
         @endforeach
     </div>
-    <form action="/envoie/message/{{ $id }}" method="post">
+<form action="/envoie/message/{{ $id }}-{{ $id2 }}" method="post">
 
         {{ csrf_field() }}
         <div>

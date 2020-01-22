@@ -31,27 +31,30 @@ class MessageController extends Controller
         return back();
     }
 
-    public function messageEntreAmisEnvoie($id)
+    public function messageEntreAmisEnvoie($id, $id2)
     {
-        $req = DB::select('select * from message_entre_amis where profil_id = ? and profil_suivi_id = ? or profil_id = ? and profil_suivi_id = ? order by mea_id asc', [auth()->user()->id,  $id, $id, auth()->user()->id]);
+        $req = DB::select('select * from message_entre_amis where profil_id = ? and profil_suivi_id = ? or profil_id = ? and profil_suivi_id = ? order by mea_id asc', [$id2, $id, $id, $id2]);
 
         MessageEntreAmis::create([
             'content' => request('message'),
-            'profil_id' => auth()->user()->id,
-            'profil_suivi_id' => $id,
+            'profil_id' => $id,
+            'profil_suivi_id' => $id2,
         ]);
 
         return back();
 
     }
 
-    public function messageEntreAmis($id) 
+    public function messageEntreAmis($id, $id2) 
     {   
-        $messages = DB::select('select * from message_entre_amis where profil_id = ? and profil_suivi_id = ? or profil_id = ? and profil_suivi_id = ? order by mea_id asc', [auth()->user()->id,  $id, $id, auth()->user()->id]);
+        $messages = DB::select('select * from message_entre_amis where profil_id = ? and profil_suivi_id = ? or profil_id = ? and profil_suivi_id = ? order by mea_id asc', [$id2, $id, $id, $id2]);
+        
+        
         return view('message', [
             'messages' =>  $messages,
             'id' => $id,
-
+            'id2' => $id2
         ]);
+
     }
 }

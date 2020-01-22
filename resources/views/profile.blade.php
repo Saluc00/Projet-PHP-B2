@@ -21,7 +21,7 @@
             <li class="mt-2">
                 <a href="{{ url('profile').'/'.$abonnement->profil_suivi_id }}">{{ (DB::table('profiles')->where('profile_id', '=', $abonnement->profil_suivi_id)->get())[0]->pseudo }}</a>
                     @if ( auth()->user()->id == $profile->profile_id)
-                    <a class="btn btn-primary" href="{{ url('message').'/'. $abonnement->profil_id}}" role="button">Discuter</a>                   
+            <a class="btn btn-primary" href="{{ url('message').'/'. $abonnement->profil_suivi_id}}-{{ auth()->user()->id }}" role="button">Discuter</a>                   
 
                     <a class="btn btn-danger" href="{{ url('retirerAmi').'/'.$abonnement->profil_suivi_id.'-'. auth()->user()->id }}" role="button">Supprimer</a>
                     @endif
