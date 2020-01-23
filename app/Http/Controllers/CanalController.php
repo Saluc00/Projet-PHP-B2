@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UnMail;
 
 class CanalController extends Controller
 {
@@ -40,7 +42,7 @@ class CanalController extends Controller
     {
 
         $canal = DB::table('canals')->where('canal_id', '=', $id)->get();
-        $messages = DB::table('messages')->where('fk_canal_id', '=', $id)->get();
+        $messages = DB::table('messages')->where('fk_canal_id', '=', $id)->orderBy('id', 'desc')->get();
         if ($canal[0]->estPrive && (Auth::guest() || Auth::user()->hasRole('user'))) {
             return redirect('canals');
         }
@@ -67,12 +69,11 @@ class CanalController extends Controller
         $dateLastMessage = DB::table('messages')->where('created_at', '<', $dateNewMessage)->latest()->limit(1)->get()[0]->created_at;
         $diffDate = strtotime($dateNewMessage) - strtotime($dateLastMessage);
 
-        if ( $diffDate > 10  /* Si un message a été envoyé apres 1h */ ) {
-            /* ici envoyer un mail */ echo 'oui';
-        } 
+        // if ( $diffDate > 10  /* Si un message a été envoyé apres 1h */ ) {
+        //     // 
+        // }
 
-
-
+        $messages = DB::table('messages')->where('fk_canal_id', '=', $id) ->orderBy('id', 'desc')->get();
         return redirect('canal' . '/' . $id);
     }
 }

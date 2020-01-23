@@ -19,7 +19,7 @@
                     <div class="mt-2 list-group-item list-group-item-action">
                         <div class="p-1 bd-highlight  d-flex justify-content-between flex-row">
                             <p><strong>{{ ucfirst($canal->titre) }}</strong>
-                            @if($canal->estPublic == 0)
+                            @if( $canal->estPublic == 0)
                                 Privée</p>
                             @else
                                 Public</p>

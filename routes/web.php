@@ -47,6 +47,9 @@ Route::middleware(['banned'])->group(function () {
     Route::get('/retirerAmi/{idsuppr}-{idenvoie}', 'ProfileController@retirerAmi');
 
     Route::post('/canal/{id}', 'CanalController@envoieMessage');
+    Route::get('/canalDB/{id}', function ($id) {
+        echo json_encode(DB::table('messages')->where('fk_canal_id', '=', $id)->get());
+    });
 
     Route::get('/admin', 'AdminController@index');
     Route::get('/delete/canal/{id}', 'AdminController@supprCanal');

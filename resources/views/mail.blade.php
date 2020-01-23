@@ -1,0 +1,1 @@
+Vous un nouveaux message sur une canal {{ $canal }} !
