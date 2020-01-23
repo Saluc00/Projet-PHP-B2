@@ -3,45 +3,57 @@
 @section('content')
 
 
-    <div class="container">
+    <div class="container ">
 
         @if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('superAdmin'))
+        <div class="d-flex justify-content-between flex-row">
+            <h2 class="col-6 text-center">Serveurs</h2>
+            <h2 class="col-6 text-center">Users</h2>
+        </div>
+        <div class="d-flex justify-content-between flex-row " style="height: 80vh;">
 
-            <h2>Canaux :</h2>
-            @foreach($canals as $canal)
-                <div class="d-flex justify-content-center">
-                    <li class="p-2 bd-highlight"><strong>{{ $canal->titre }}</strong></li> @if($canal->estPublic == 0)
-                        <p class="p-2 bd-highlight">Privée</p> @else
-                        <p>
-                            Public</p> @endif
-                    <a class="p-2 bd-highlight" href="delete/canal/{{ $canal->canal_id }}">
-                        <button>Supprimer</button>
-                    </a>
-                    <hr>
-                </div>
-            @endforeach
-
-            <h2>User</h2>
-
-            @foreach($users as $user)
-                <div class="d-flex justify-content-center">
-                    <li class="p-2 bd-highlight"><strong>{{ $user->email }}</strong></li>
-
-                    <div class="dropdown p-2 bd-highlight">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ $user->name }}
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="change/role/{{$user->id}}/2">Admin</a>
-                            <a class="dropdown-item" href="change/role/{{$user->id}}/3">VIP</a>
-                            <a class="dropdown-item" href="change/role/{{$user->id}}/4">Utilisateur</a>
-                            <a class="dropdown-item" href="change/role/{{$user->id}}/5">Banni</a>
+            <div class="col-6 mr-3 overflow-auto">
+                    {{-- ahehahejhfdjn --}}
+                <div class="list-group ">
+                @foreach($canals as $canal)
+                    <div class="mt-2 list-group-item list-group-item-action">
+                        <div class="p-1 bd-highlight  d-flex justify-content-between flex-row">
+                            <p><strong>{{ ucfirst($canal->titre) }}</strong>
+                            @if($canal->estPublic == 0)
+                                Privée</p>
+                            @else
+                                Public</p>
+                            @endif
+                                <button class="btn btn-primary" href="delete/canal/{{ $canal->canal_id }}">Supprimer</button>
                         </div>
                     </div>
-                    <hr>
+                @endforeach
                 </div>
-            @endforeach
+            </div>
+
+            <div class="col-6 ml-3 overflow-auto list-group">
+                @foreach($users as $user)
+                
+                <div class="mt-2 list-group-item list-group-item-action">
+                    <div class="p-1 bd-highlight  d-flex justify-content-between flex-row">
+                        <p class="p-2 bd-highlight"><strong>{{ $user->email }}</strong></p>
+
+                        <div class="dropdown p-2 bd-highlight">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ $user->name }}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="change/role/{{$user->id}}/2">Admin</a>
+                                <a class="dropdown-item" href="change/role/{{$user->id}}/3">VIP</a>
+                                <a class="dropdown-item" href="change/role/{{$user->id}}/4">Utilisateur</a>
+                                <a class="dropdown-item" href="change/role/{{$user->id}}/5">Banni</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+        </div>
 
         @else
             <h1>error 404</h1>
