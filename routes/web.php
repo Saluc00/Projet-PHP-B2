@@ -64,6 +64,6 @@ Route::middleware(['banned'])->group(function () {
     });
 
 
-    Route::post('/envoie/message/{id}', 'MessageController@messageEntreAmisEnvoie');
-    Route::get('/message/{id}', 'MessageController@messageEntreAmis');
+    Route::post('/envoie/message/{id}-{id2}', 'MessageController@messageEntreAmisEnvoie');
+    Route::get('/message/{id}-{id2}', 'MessageController@messageEntreAmis');
 });
