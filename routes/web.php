@@ -72,6 +72,23 @@ Route::middleware(['banned'])->group(function () {
 
     Route::post('/envoie/message/{id}-{id2}', 'MessageController@messageEntreAmisEnvoie');
     Route::get('/message/{id}-{id2}', 'MessageController@messageEntreAmis');
+
+    Route::get('/messageDB/{id}-{id2}', function ($id, $id2) {
+        echo json_encode(DB::table('message_entre_amis')
+            ->join('profiles', function ($join) {
+                $join->on('profiles.user_id', '=', 'message_entre_amis.profil_id')->orOn('profiles.user_id', '=', 'message_entre_amis.profil_suivi_id');
+            })
+            ->where([
+                ['message_entre_amis.profil_id', '=', $id2],
+                ['message_entre_amis.profil_suivi_id', '=', $id],
+            ])
+            ->orWhere([
+                ['message_entre_amis.profil_id', '=', $id],
+                ['message_entre_amis.profil_suivi_id', '=', $id2],
+            ])
+            ->orderBy('message_entre_amis.mea_id', 'desc')
+            ->get());
+    });
 });
 
 Route::middleware(['notBanned'])->group(function () {

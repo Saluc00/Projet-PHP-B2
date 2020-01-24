@@ -1,13 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-=======
 
     <div class="container">
         <div class="row justify-content-center">
@@ -18,20 +11,6 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -62,7 +41,7 @@
 <hr>
                             {{-- pseudo --}}
                             <div class="form-group row">                                
-                                <label for="password-confirm"
+                                <label 
                                 class="col-md-4 col-form-label text-md-right">Pseudo</label>
                                 <div class="col-md-6">
                                     <input  class="form-control" name="pseudo">
@@ -71,7 +50,7 @@
 
                             {{-- nom --}}
                             <div class="form-group row">                                
-                                <label for="password-confirm"
+                                <label 
                                 class="col-md-4 col-form-label text-md-right">Nom</label>
                                 <div class="col-md-6">
                                     <input  class="form-control" name="nom">
@@ -80,7 +59,7 @@
                             
                             {{-- prénom --}}
                             <div class="form-group row">                                
-                                <label for="password-confirm"
+                                <label
                                 class="col-md-4 col-form-label text-md-right">Prénom</label>
                                 <div class="col-md-6">
                                     <input  class="form-control" name="prenom">
@@ -89,7 +68,7 @@
 
                             {{-- Téléphone --}}
                             <div class="form-group row">                                
-                                <label for="password-confirm"
+                                <label
                                 class="col-md-4 col-form-label text-md-right">Téléphone</label>
                                 <div class="col-md-6">
                                     <input  class="form-control" name="phone">
@@ -98,7 +77,7 @@
                             
                             {{-- Age --}}
                             <div class="form-group row">                                
-                                <label for="password-confirm"
+                                <label
                                 class="col-md-4 col-form-label text-md-right">Age</label>
                                 <div class="col-md-6">
                                     <input  class="form-control" name="age">
@@ -111,7 +90,6 @@
                                         {{ __('Register') }}
                                     </button>
                                 </div>
->>>>>>> master
                             </div>
                         </div>
                     </form>

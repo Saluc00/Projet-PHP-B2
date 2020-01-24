@@ -51,19 +51,15 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        echo 'oui';
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-<<<<<<< HEAD
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-=======
-            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'password' => ['required', 'string', 'min:4'],
             'pseudo' => ['required', 'string'],
             'nom' => ['required', 'string'],
             'prenom' => ['required', 'string'],
             'age' => ['required'],
             'phone' => ['required']
->>>>>>> master
         ]);
     }
 
@@ -76,9 +72,7 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        echo 'oui';
         $user = User::create([
->>>>>>> master
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);

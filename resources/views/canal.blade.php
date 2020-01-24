@@ -75,9 +75,9 @@
                 // Ici quand la requete fonctionne faire une action !
                 //success: ,
                 dataType: 'json',
-            })
+            });
             $('#text').val('')
-        })
+        });
         $.get("http://192.168.10.10/canalDB/{{ $canal->canal_id }}", function (data) {
             reload(data.length)
         }, 'json')
