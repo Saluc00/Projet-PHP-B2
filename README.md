@@ -75,14 +75,30 @@ Allez maintenant dans votre dossier Homestead et lancer la commande :
 ```bash
 vagrant up
 ```
+Ensuite faites :
+```bash
+vagrant ssh
+```
 
+```bash
+cd /code
+```
+```bash
+composer install
+
+```
+```bash
+php artisan migrate:fresh --seed
+```
+
+Puis dans votre console, rentrez
 Vous pouvez maintenant vous connectez avec votre navigateur à l'url `192.168.10.10`, vous devriez y voir la page d'accueil de Laravel.
 
 ---
 
 ## Connecter sa base de données
 
-Pour connectez votre base de données à votre projet vous devez modifier le fichier `.env` se trouvent dans votre dossier `CodeLaravel`.
+Pour connectez votre base de données à votre projet vous devez modifier le fichier `.env` se trouvent dans votre dossier `onlineChat`.
 
 Vous devez modifier ces lignes pour pouvoir vous connecter à votre base de données :
 
@@ -92,6 +108,6 @@ DB_HOST=192.168.10.10
 DB_PORT=3306
 DB_DATABASE=homestead
 DB_USERNAME=homestead
-DB_PASSWORD=homestead
+DB_PASSWORD=secret
 ```
 ---
