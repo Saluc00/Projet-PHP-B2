@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfBan
+class RedirectIfNotBan
 {
     /**
      * Handle an incoming request.
@@ -18,9 +18,11 @@ class RedirectIfBan
     public function handle($request, Closure $next, $guard = null)
     {
         if (!Auth::guest() && Auth::user()->hasRole('banni')) {
-            return redirect('/banned');
+            return $next($request);
+        } else {
+            return back();
         }
 
-        return $next($request);
+
     }
 }

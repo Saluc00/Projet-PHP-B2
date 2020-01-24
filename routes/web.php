@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
 Route::middleware(['banned'])->group(function () {
     Route::get('/', function () {
         return view('welcome');
@@ -31,8 +33,6 @@ Route::middleware(['banned'])->group(function () {
         ]);
     });
 
-    Auth::routes();
-
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/messages', 'MessageController@envoie')->name('messages');
@@ -48,7 +48,11 @@ Route::middleware(['banned'])->group(function () {
 
     Route::post('/canal/{id}', 'CanalController@envoieMessage');
     Route::get('/canalDB/{id}', function ($id) {
-        echo json_encode(DB::table('messages')->where('fk_canal_id', '=', $id)->get());
+        echo json_encode(DB::table('messages')
+            ->join('profiles', 'profiles.user_id', '=', 'messages.user_id')
+            ->where('messages.fk_canal_id', '=', $id)
+            ->orderBy('id', 'desc')
+            ->get());
     });
 
     Route::get('/admin', 'AdminController@index');
@@ -60,13 +64,16 @@ Route::middleware(['banned'])->group(function () {
         event($event);
         dd();
     });
-        
+
     Route::get('/vip', function () {
         Auth::user()->assignRole('vip');
         return back();
     });
 
-
     Route::post('/envoie/message/{id}-{id2}', 'MessageController@messageEntreAmisEnvoie');
     Route::get('/message/{id}-{id2}', 'MessageController@messageEntreAmis');
+});
+
+Route::middleware(['notBanned'])->group(function () {
+    Route::get('/banned', 'BannedController@initialisation');
 });

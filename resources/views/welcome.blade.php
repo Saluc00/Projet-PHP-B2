@@ -85,7 +85,7 @@
         </div>
 
         <div class="links">
-            <a href="{{ url('/canals') }}">canals</a>
+            <a href="{{ url('/canals') }}">canaux</a>
             <a href="https://github.com/Saluc00/Projet-PHP-B2">GitHub</a>
         </div>
     </div>

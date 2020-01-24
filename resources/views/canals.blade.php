@@ -21,18 +21,30 @@
                 @endif
                 <button type="submit" class="btn btn-primary">Créer</button>
             </form>
+            <ul class="list-group">
+                @foreach($canals as $canal)
+                    <li class="list-group-item list-group-item-action d-flex justify-content-between ">
+                        <p>{{ ucfirst($canal->titre) }}. @if ($canal->estPrive == 1)(privé) @endif </p>
+                        <button
+                            onclick="window.location.href='{{ url('canal').'/'.$canal->canal_id }}'" type="button"
+                            class="btn btn-primary">Entrer
+                        </button>
+                    </li>
+                @endforeach
+            </ul>
+        @else
+            <ul class="list-group">
+                @foreach($canalsPublic as $canal)
+                    <li class="list-group-item list-group-item-action d-flex justify-content-between ">
+                        <p>{{ ucfirst($canal->titre) }}. @if ($canal->estPrive == 1)(privé) @endif </p>
+                        <button
+                            onclick="window.location.href='{{ url('canal').'/'.$canal->canal_id }}'" type="button"
+                            class="btn btn-primary">Entrer
+                        </button>
+                    </li>
+                @endforeach
+            </ul>
         @endif
-        <ul class="list-group">
-            @foreach($canals as $canal)
-                <li class="list-group-item list-group-item-action d-flex justify-content-between ">
-                    <p>{{ ucfirst($canal->titre) }}. @if ($canal->estPrive == 1)(privé) @endif </p>
-                    <button
-                        onclick="window.location.href='{{ url('canal').'/'.$canal->canal_id }}'" type="button"
-                        class="btn btn-primary">Entrer
-                    </button>
-                </li>
-            @endforeach
-        </ul>
 
     </div>
 

@@ -41,7 +41,7 @@ class ProfileController extends Controller
             $nombreAmi = DB::select('select count(profil_id) nombreAmi from amis where profil_id = (select profile_id from profiles where user_id = ' . Auth::user()->id . ') ');
             if ($nombreAmi[0]->nombreAmi == 10) {
                 echo "Vous avez déja atteind le maximum d'ami ! Passez en VIP pour pouvoir en ajouter plus.";
-                return null;
+                return back();
             }
         }
         Ami::create([

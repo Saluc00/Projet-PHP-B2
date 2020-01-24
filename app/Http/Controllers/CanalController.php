@@ -42,13 +42,22 @@ class CanalController extends Controller
     {
 
         $canal = DB::table('canals')->where('canal_id', '=', $id)->get();
-        $messages = DB::table('messages')->where('fk_canal_id', '=', $id)->orderBy('id', 'desc')->get();
+        $messages = DB::table('messages')->where('fk_canal_id', '=', $id)->get();
+
+        $listeDesPersonnes = DB::table('users')
+            ->join('messages', 'users.id', '=', 'messages.user_id')
+            ->join('profiles', 'users.id', '=', 'profiles.profile_id')
+            ->select('users.id', 'profiles.pseudo')
+            ->distinct()
+            ->get();
+
         if ($canal[0]->estPrive && (Auth::guest() || Auth::user()->hasRole('user'))) {
             return redirect('canals');
         }
         return view('canal', [
             'canal' => $canal[0],
-            'messages' => $messages
+            'messages' => $messages,
+            'listeDesPersonnes' => $listeDesPersonnes
         ]);
     }
 
@@ -73,7 +82,7 @@ class CanalController extends Controller
         //     // 
         // }
 
-        $messages = DB::table('messages')->where('fk_canal_id', '=', $id) ->orderBy('id', 'desc')->get();
+        $messages = DB::table('messages')->where('fk_canal_id', '=', $id)->orderBy('id', 'desc')->get();
         return redirect('canal' . '/' . $id);
     }
 }

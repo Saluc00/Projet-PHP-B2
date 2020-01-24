@@ -1,0 +1,20 @@
+/*partie desktop*/
+@media all and (min-width: 992px) {
+    .listePersonnesResponsive {
+        max-height: 60vh;
+        background-color: red;
+    }
+}
+
+/*partie mobile*/
+@media all and (max-width: 992px) {
+    .listePersonnesResponsive {
+        max-height: 1em;
+        background-color: blueviolet;
+    }
+}
+
+.listePersonnesResponsive {
+    max-height: 1em;
+    background-color: green;
+}
