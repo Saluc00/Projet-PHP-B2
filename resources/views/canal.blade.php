@@ -57,6 +57,7 @@
                     scrollEnBas.scrollTop = scrollEnBas.scrollHeight;
                 }
 
+
                 setTimeout(reload(nbrMessageActuel));
 
             }, 'json')
