@@ -52,9 +52,10 @@
                         '                        <a href=\"/profile/' + data[0].user_id + '\">' + data[0].pseudo + ' </a>: ' + data[0].content +
                         '                    </p>' +
                         '                </div>');
+                        
+                    scrollEnBas = document.getElementById('text-msg');
+                    scrollEnBas.scrollTop = scrollEnBas.scrollHeight;
                 }
-                scrollEnBas = document.getElementById('text-msg');
-                scrollEnBas.scrollTop = scrollEnBas.scrollHeight;
 
                 setTimeout(reload(nbrMessageActuel));
 
