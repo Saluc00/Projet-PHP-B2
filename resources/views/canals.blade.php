@@ -5,8 +5,8 @@
 @section('content')
 
     <div class="container">
-        <h1>Canal</h1>
-        @if (! Auth::guest() && ! Auth::user()->hasRole('user'))
+        <h1 class="text-center m-3 border rounded border-dark p-3">Tous les canaux</h1>
+        @if (! Auth::guest() && !Auth::user()->hasRole('user'))
             <form action="/canals" method="post" class="mb-3 mt-3">
                 {{ csrf_field() }}
                 <div class="form-group">

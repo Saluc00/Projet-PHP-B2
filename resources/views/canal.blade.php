@@ -9,12 +9,11 @@
 
         <h1 class="text-center m-3">Canal: <strong>{{ ucfirst($canal->titre) }}</strong></h1>
 
-        <div id="text-msg" style="height: 60vh;"
-             class="border rounded bourder-dark p-3 m-t3 overflow-auto messageEnDirect">
+        <div id="text-msg" style="height: 60vh;" class="border rounded bourder-dark p-3 m-t3 overflow-auto messageEnDirect">
             @foreach($messages as $message)
                 <div class="msg" style="text-overflow: ellipsis; word-wrap: break-word;">
                     <p>
-                        <a href="{{ url('profile').'/'.$message->user_id }}">{{ (DB::table('profiles')->where('user_id', '=', $message->user_id)->get())[0]->pseudo }}</a>: {{ $message->content }}
+                        <a @if ($message->user_id == auth()->user()->id) class="text-danger" @else class="text-primary" @endif href="{{ url('profile').'/'.$message->user_id }}">{{ (DB::table('profiles')->where('user_id', '=', $message->user_id)->get())[0]->pseudo }}</a>: {{ $message->content }}
                     </p>
                 </div>
             @endforeach
