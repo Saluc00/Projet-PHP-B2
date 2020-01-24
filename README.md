@@ -75,6 +75,13 @@ Allez maintenant dans votre dossier Homestead et lancer la commande :
 ```bash
 vagrant up
 ```
+Une fois terminé : 
+```bash
+vagrant ssh
+cd code
+php artisan migrate:fresh --seed 
+```
+Cela permet de monter la bdd sans problème.
 
 Vous pouvez maintenant vous connectez avec votre navigateur à l'url `192.168.10.10`, vous devriez y voir la page d'accueil de Laravel.
 
