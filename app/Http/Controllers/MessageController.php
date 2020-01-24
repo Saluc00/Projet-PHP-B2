@@ -6,16 +6,18 @@ use Illuminate\Http\Request;
 use App\Message;
 use App\MessageEntreAmis;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class MessageController extends Controller
 {
-    public function envoie() 
+    public function envoie()
     {
         if (auth()->guest()) {
             flash("Vous devez être connecté pour voir cette page.")->error();
-        
+
             return redirect('/home');
-        } 
+        }
 
         request()->validate([
             'message' => ['required'],
@@ -23,8 +25,8 @@ class MessageController extends Controller
 
         Message::create([
             'content' => request('message'),
-            'fk_profile_id' => auth()->user()->id ,
-            'fk_canal_id' => 1, 
+            'fk_profile_id' => auth()->user()->id,
+            'fk_canal_id' => 1,
         ]);
 
         //  flash("Votre message a bien été publié.")->sucess();
@@ -45,13 +47,20 @@ class MessageController extends Controller
 
     }
 
-    public function messageEntreAmis($id, $id2) 
-    {   
+    public function messageEntreAmis($id, $id2)
+    {
+        if (Auth::guest()) {
+            return back();
+        } else if (Auth::user()->id != $id) {
+            if (Auth::user()->id != $id2) {
+                return back();
+            }
+        }
+
         $messages = DB::select('select * from message_entre_amis where profil_id = ? and profil_suivi_id = ? or profil_id = ? and profil_suivi_id = ? order by mea_id asc', [$id2, $id, $id, $id2]);
-        
-        
+
         return view('message', [
-            'messages' =>  $messages,
+            'messages' => $messages,
             'id' => $id,
             'id2' => $id2
         ]);

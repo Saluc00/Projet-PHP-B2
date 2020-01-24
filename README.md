@@ -2,7 +2,7 @@
 
 * [I. Installation Homestead](##-Intallation-Homestead)
 * [II. Connecter sa base de données](##-Connecter-sa-base-de-données)
-
+ 
 
 <a name="section-1"></a>
 
@@ -110,118 +110,4 @@ DB_DATABASE=homestead
 DB_USERNAME=homestead
 DB_PASSWORD=secret
 ```
-
-# Tchat en direct
-## Comment ça fonctionne ?
-
-Voici le code JS
-```
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
-        })
-        function reload(nbrMessagePrecendent) {
-            // affiche BDD
-            $.get("http://192.168.10.10/messageDB/{{$id}}-{{$id2}}", function (data) {
-                const nbrMessageActuel = data.length
-                if (nbrMessageActuel > nbrMessagePrecendent) {
-                    console.log(data[0])
-                    $('.messageEnDirect').append('<div class="msg" style="text-overflow: ellipsis; word-wrap: break-word;">' +
-                        '                    <p>' +
-                        '                        <a href=\"/profile/' + data[0].user_id + '\">' + data[0].pseudo + ' </a>: ' + data[0].content +
-                        '                    </p>' +
-                        '                </div>');
-                    scrollEnBas = document.getElementById('text-msg');
-                    scrollEnBas.scrollTop = scrollEnBas.scrollHeight;
-                }
-                setTimeout(reload(nbrMessageActuel));
-            }, 'json')
-        }
-
-        const lien = document.getElementById("monform").action
-        console.log(lien)
-        document.getElementById('button-addon1').addEventListener('click', function (e) {
-            e.preventDefault();
-            let msg = {'message': document.getElementById('text').value}
-            $.ajax({
-                url: lien,
-                data: msg,
-                type: 'POST',
-                // Ici quand la requete fonctionne faire une action !
-                //success: ,
-                dataType: 'json',
-            })
-            $('#text').val('')
-        })
-        $('#text').val('')
-        $.get("http://192.168.10.10/messageDB/{{$id}}-{{$id2}}", function (data) {
-            reload(data.length)
-        }, 'json')
-```
-
-Pour que les requetes ajax fonctionnent, il me faut ajouter se bout de code
-```
-        $.ajaxSetup({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
-        })
-```
-Pourquoi ? Car laravel bloque les requete en ajax autrement..
-
-### Comment récuperer les données ?
-La fonctione **Reload()**
-```
-function reload(nbrMessagePrecendent) {
-  // affiche BDD
-  $.get("http://192.168.10.10/messageDB/{{$id}}-{{$id2}}", function (data) {
-      const nbrMessageActuel = data.length
-      if (nbrMessageActuel > nbrMessagePrecendent) {
-          console.log(data[0])
-          $('.messageEnDirect').append('<div class="msg" style="text-overflow: ellipsis; word-wrap: break-word;">' +
-              '                    <p>' +
-              '                        <a href=\"/profile/' + data[0].user_id + '\">' + data[0].pseudo + ' </a>: ' + data[0].content +
-              '                    </p>' +
-              '                </div>');
-          scrollEnBas = document.getElementById('text-msg');
-          scrollEnBas.scrollTop = scrollEnBas.scrollHeight;
-      }
-      setTimeout(reload(nbrMessageActuel));
-  }, 'json')
-}
-```
-Dans Web.php
-
-La route `/messageDB/{{$id}}-{{$id2}}` permet de recuperer en **Json** tous les messages des users qui ont l'id : *{{$id}}* et *{{$id2}}*
-
-Une fois tous recuperé. on regarde le nombre de message que l'on a reçue pour comparer s'il est superieur ou non a la requete que l'on à efféctuer avant.
-
-Si oui, on ajoute le nouveaux message.
-
-Puis on relance la requete, en boucle.
-
-Se qui nous donne alors ce dynamisme.
-
-### Comment envoyer les données ?
-
-```
-const lien = document.getElementById("monform").action
-document.getElementById('button-addon1').addEventListener('click', function (e) {
-    e.preventDefault();
-    let msg = {'message': document.getElementById('text').value}
-    $.ajax({
-        url: lien,
-        data: msg,
-        type: 'POST',
-        // Ici quand la requete fonctionne faire une action !
-        //success: ,
-        dataType: 'json',
-    })
-    $('#text').val('')
-})
-$('#text').val('')Z
-```
-
-- On stocke le lien d'action du formulaire.
-- Annule le comportement de base du formulaire (ce qui nous fait pas recharger la page)
-- Recuperer les données du textarea
-- En **ajax** on envoie les données du textarea
-- On vide le textarea
+Pour la doc sur les fonctionalité : 
