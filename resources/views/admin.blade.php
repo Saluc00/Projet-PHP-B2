@@ -24,9 +24,9 @@
                                     @else
                                         Public</p>
                                     @endif
-                                    <button class="btn btn-primary" href="delete/canal/{{ $canal->canal_id }}">
+                                    <a class="btn btn-primary" href="delete/canal/{{ $canal->canal_id }}">
                                         Supprimer
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         @endforeach
