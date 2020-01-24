@@ -110,4 +110,4 @@ DB_DATABASE=homestead
 DB_USERNAME=homestead
 DB_PASSWORD=secret
 ```
-Pour la doc sur les fonctionalité : 
+Pour la doc sur les fonctionalité : https://github.com/Saluc00/Projet-PHP-B2/blob/Version/README_FONCTIONALITE.md
