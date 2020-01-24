@@ -73,6 +73,7 @@ Route::middleware(['banned'])->group(function () {
     Route::post('/envoie/message/{id}-{id2}', 'MessageController@messageEntreAmisEnvoie');
     Route::get('/message/{id}-{id2}', 'MessageController@messageEntreAmis');
 
+<<<<<<< Updated upstream
     Route::get('/messageDB/{id}-{id2}', function ($id, $id2) {
         echo json_encode(DB::table('message_entre_amis')
             ->join('profiles', function ($join) {
@@ -87,6 +88,21 @@ Route::middleware(['banned'])->group(function () {
                 ['message_entre_amis.profil_suivi_id', '=', $id2],
             ])
             ->orderBy('message_entre_amis.mea_id', 'desc')
+=======
+    Route::post('/canalUsers/{id}', function ($id) {
+        $profile = DB::table('profiles')
+                    ->where('profile_id', '=', auth()->user()->id)
+                    ->get()[0];
+        DB::table('user_canal')->insert([
+            'pseudo' => $profile->pseudo,
+            'user_id' => auth()->user()->id,
+            'fk_canal_id' => $id,
+        ]);
+    });
+    Route::get('/canalUsers/{id}', function ($id) {
+        echo json_encode(DB::table('user_canal')
+            ->where('fk_canal_id', '=', $id)
+>>>>>>> Stashed changes
             ->get());
     });
 });

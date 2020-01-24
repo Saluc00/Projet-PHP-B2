@@ -1,15 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-=======
-
     <div class="container">
+        
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -111,7 +104,6 @@
                                         {{ __('Register') }}
                                     </button>
                                 </div>
->>>>>>> master
                             </div>
                         </div>
                     </form>

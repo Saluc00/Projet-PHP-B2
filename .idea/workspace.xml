@@ -204,14 +204,10 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
         <option value="$PROJECT_DIR$/database/migrations/2019_10_08_145304_create_profile_table.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
-=======
->>>>>>> master
         <option value="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" />
         <option value="$PROJECT_DIR$/database/factories/CanalFactory.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_10_22_145829_create_message_table.php" />
@@ -220,13 +216,7 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_10_22_145820_create_canal_table.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CanalController.php" />
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> master
-=======
         <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
-=======
->>>>>>> master
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_10_08_145304_create_profile_table.php" />
         <option value="$PROJECT_DIR$/database/factories/ProfileFactory.php" />
@@ -238,9 +228,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_12_01_165311_create_amis_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_12_01_165311_create_ami_table.php" />
         <option value="$PROJECT_DIR$/resources/views/profile.blade.php" />
-<<<<<<< HEAD
->>>>>>> master
-=======
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
